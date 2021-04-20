@@ -1,25 +1,52 @@
 from firebase import firebase
-
+from constants import constants
+from pyrebase import pyrebase
 
 
 class firebaseManagment():
     def __init__ (self,url):
+        firebaseConfigfirebaseConfig = {
+            'apiKey': "AIzaSyCjg37v8Kf75RTi4O9KO5gcKG7MmVyaamA",
+            'authDomain': "lasalleacousticapp.firebaseapp.com",
+            'databaseURL': "https://lasalleacousticapp.firebaseio.com",
+            'projectId': "lasalleacousticapp",
+            'storageBucket': "lasalleacousticapp.appspot.com",
+            'messagingSenderId': "471079503444",
+            'appId': "1:471079503444:web:b29ff5157e45b476eb0fc1"}
+        firebase_app= pyrebase.initialize_app(firebaseConfigfirebaseConfig)
+        self.firebase_storage = firebase_app.storage()
         self.db = firebase.FirebaseApplication(url,None)
+        self.new_records_path =[]
+        self.new_records_name =[]
         
+    def getRecordingsNameAndPath(self):
+        return self.new_records_name,self.new_records_path
     
-    def getNewRecordings(self):
-        users = self.db.get('/Users',None)
-        new_records =[]
+    def existNewRecordings(self):
+        users = self.db.get(constants.USERS_FIREBASE_PATH,None)
+        index = 0
+        isPendingRecording = False
         for user in users:
-            user_info = self.db.get('/Users',user )
-            record_info = self.db.get('/Users/'+user+'/records',None)
+            user_info = self.db.get(constants.USERS_FIREBASE_PATH,user)
+            record_info = self.db.get(constants.USERS_FIREBASE_PATH+user+constants.RECORDS_FIREBASE_PATH,None)
             if (record_info is not None):
                 for recording in record_info:
-                    # falta condició de si sha obtingut o no
-                    new_records.append(recording["path"])
-        print(new_records)    
-        return new_records        
-                
+                    if (recording["machineLearningApplied"] == False):
+                        self.new_records_name.append(recording["path"])
+                        self.new_records_path.append(constants.USERS_FIREBASE_PATH+user+constants.RECORDS_FIREBASE_PATH+str(index)+'/')
+                        isPendingRecording = True
+                    index += 1
+        return isPendingRecording
+    
+    def getUser(self,path):
+        decode_data = path.split('/')
+        user_previous_path = "/"+decode_data[1]+"/"+decode_data[2]+"/"
+        user = self.db.get(user_previous_path,None)
+        return user["email"]
+    
+    def downLoadFiletoFolder(self,file,downloadpath):
+        self.firebase_storage.child(file).download(downloadpath)
+        #self.firebase_storage.child(downloadpath).download(file)
     """
             self.days.append(aux_day)
     def print_planned_pills(self,day):

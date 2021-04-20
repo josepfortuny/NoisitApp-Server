@@ -9,6 +9,9 @@ from keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import random
 ## importem llibreries de tensor flow y keras
+# per fer audi
+#
+#https://www.tensorflow.org/tutorials/audio/simple_audio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,7 +23,6 @@ class NeuralNetwork():
     IMG_WIDTH = 64
     def __init__(self,path):
         self.path = path
-
 
     def init_training_neural_network(self):
         """

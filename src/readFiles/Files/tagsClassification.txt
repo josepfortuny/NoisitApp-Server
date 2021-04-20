@@ -1,0 +1,54 @@
+(Human) Person Speech
+(Human) Person Laughing
+(Human) Person Shouting
+(Human) Person Crying
+(Human) Person Coughing
+(Human) Person Sneezing
+(Human) Person Singing
+(Human) Infant
+(Human) Children
+(Human) Person Footsteps
+(Nature) Wind
+(Nature) Water
+(Nature) River
+(Nature) Sea: Wave
+(Nature) Thunder
+(Nature) Rain
+(Animals) Dog: Bark
+(Animals) Dog: Howl
+(Animals) Cat
+(Animals) Bird: Tweet
+(Vegetation) Leaves Rustling
+(Construction) Jackhammer
+(Construction) Hammering
+(Construction) Drilling
+(Construction) Sawing
+(Construction) Explosion
+(Construction) Engine running
+(Ventilation) Air Conditioner
+(Transport) Bicycle
+(Transport) Skateboard
+(Transport) Boat
+(Transport) Train
+(Transport) Subway
+(Transport) Car
+(Transport) Police
+(Transport) Ambulance: Siren
+(Transport) Vehicle Horn
+(Transport) Vehicle Brakes
+(Transport) Vehicle Wheels Passing
+(Transport) Motorcycle
+(Transport) Bus
+(Transport) Truck
+(Transport) Garbage Truck
+(Transport) Airplane
+(Transport) Helicopter
+(Music) Live Music
+(Music) Car Radio
+(Music) House Party
+(Music) Club
+(Music) Ice Cream Truck
+(Music) Background Music
+(Other) Alarm
+(Other) Bell
+(Other) Unidentified Sound

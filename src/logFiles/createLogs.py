@@ -1,5 +1,6 @@
 #importing module
 import logging
+import time
 
 class createLogs():
     def __init__(self):
@@ -11,8 +12,17 @@ class createLogs():
 
 
     def printWarning(self,message):
-        logging.warning(" Warning  "+ message)
+        
+        logging.warning(": Warning  "+ message)
     def printError(self,message):
-        logging.error(" Error  "+ message)
+        # Current Day
+        Day = time.strftime("%m-%d-%Y", time.localtime())
+        # Current Time
+        Time = time.strftime("%I:%M:%S %p", time.localtime())
+        logging.error(Day + Time +": Error  "+ message)
     def printCritical(self,message):
-        logging.critical(" Critical  "+ message)
+        # Current Day
+        Day = time.strftime("%m-%d-%Y", time.localtime())
+        # Current Time
+        Time = time.strftime("%I:%M:%S %p", time.localtime())
+        logging.critical(Day + Time +": Critical  "+ message)
