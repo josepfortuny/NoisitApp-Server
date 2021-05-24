@@ -1,1 +1,3 @@
 -- pip3 install pyrebase
+-- sudo apt-get install libatlas-base-dev
+-- pip3 install scikits.audiolab
